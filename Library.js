@@ -58,17 +58,26 @@ function displayBooks() {
         let pages = row.insertCell(2);
         let read = row.insertCell(3);
         let remove = row.insertCell(4);
+        let toggleRead = row.insertCell(5);
 
         title.innerHTML = book.title;
         author.innerHTML = book.author;
         pages.innerHTML = book.pages;
         read.innerHTML = book.read;
         remove.innerHTML = '<button class="remove">Remove</button>';
+        toggleRead.innerHTML = '<button class="toggleRead">Toggle Read Status</button>';
 
         remove.querySelector('.remove').addEventListener('click', () => {
             removeBook(index);
         });
+        toggleRead.querySelector('.toggleRead').addEventListener('click', () => {
+            book.toggleReadStatus();
+            displayBooks();
+        });
     });
+}
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read;
 }
 function removeBook(index) {
     myLibrary.splice(index, 1);
