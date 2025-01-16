@@ -9,9 +9,29 @@
 </head>
 <body>
 
-    <dialog>
-        <div class="input">
+    
 
+    <div class="header">
+        <img src="library_logo.png" alt="">
+        <h1>Library</h1>
+        <button class = "show">Add New Book</button>
+    </div>
+
+    <table class="libaryTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+                <th>Toggle Read Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <dialog hidden>
             <label for="title">Enter a title</label>
             <input type="text" id="title">
             
@@ -25,31 +45,8 @@
             <input type="checkbox" id="read">
 
             <button class  = "addBook"> Add Book</button>
-
-        </div>
     </dialog>
-    <button class = "show">Add New Book</button>
 
-    
 
-    
-
-    <h1>Libary</h1>
-    <hr>
-    
-    <table class="libaryTable">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Read</th>
-                <th>Toggle Read Status</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
 </body>
 </html>

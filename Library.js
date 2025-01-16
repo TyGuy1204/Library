@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dialog = document.querySelector('dialog');
     const addBookButton = document.querySelector('.show');
 
+
     addBookButton.addEventListener('click', () => {
         dialog.showModal();
     });
