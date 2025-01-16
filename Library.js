@@ -68,15 +68,15 @@ function displayBooks() {
         let author = row.insertCell(1);
         let pages = row.insertCell(2);
         let read = row.insertCell(3);
-        let remove = row.insertCell(4);
-        let toggleRead = row.insertCell(5);
+        let toggleRead = row.insertCell(4);
+        let remove = row.insertCell(5);
 
         title.innerHTML = book.title;
         author.innerHTML = book.author;
         pages.innerHTML = book.pages;
         read.innerHTML = book.read;
         remove.innerHTML = '<button class="remove">Remove</button>';
-        toggleRead.innerHTML = '<button class="toggleRead">Toggle Read Status</button>';
+        toggleRead.innerHTML = '<button class="toggleRead">Toggle</button>';
 
         remove.querySelector('.remove').addEventListener('click', () => {
             removeBook(index);

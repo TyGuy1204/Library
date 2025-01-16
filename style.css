@@ -70,3 +70,11 @@ input[type="checkbox"] {
 th{
     border-bottom: 2px solid #a3b18a;
 }
+td button{
+    border-radius: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding:10px;
+    font-family: inherit;
+    background-color:#a3b18a ;
+    color: #f2fedb;
+}
