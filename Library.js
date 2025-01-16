@@ -2,6 +2,14 @@ const myLibrary = [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    const dialog = document.querySelector('dialog');
+    const addBookButton = document.querySelector('.show');
+
+    addBookButton.addEventListener('click', () => {
+        dialog.showModal();
+    });
+
     let addButton = document.querySelector(".addBook");
     addButton.addEventListener("click", () => {
         let title = document.querySelector('#title').value;
@@ -22,8 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(book);
 
         displayBooks();
+        dialog.close();
         clearFields();
     });
+
 });
 
 
