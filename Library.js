@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let author = document.querySelector('#author').value;
         let pages = document.querySelector('#pages').value;
         let read = document.querySelector('#read').value;
+
+        if(read === "on"){
+            read = true;
+        }
+        else{
+            read = false;
+        }
+
         let book = new Book(title, author, pages, read);
         addBookToLibrary(book);
         console.log(myLibrary);
