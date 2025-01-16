@@ -2,8 +2,8 @@ const myLibrary = [];
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    let button = document.querySelector("button");
-    button.addEventListener("click", () => {
+    let addButton = document.querySelector(".addBook");
+    addButton.addEventListener("click", () => {
         let title = document.querySelector('#title').value;
         let author = document.querySelector('#author').value;
         let pages = document.querySelector('#pages').value;
@@ -20,11 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
         addBookToLibrary(book);
         console.log(myLibrary);
         console.log(book);
-
+        
+        displayBooks();
         clearFields();
-
-
-    }); 
+    });
 });
 
 
@@ -46,4 +45,22 @@ function clearFields() {
   document.querySelector('#pages').value = '';
   document.querySelector('#read').checked = false;
 }
+function displayBooks() {
+    let table = document.querySelector('table');
+    let tbody = document.querySelector('tbody');
+    tbody.innerHTML = '';
+    myLibrary.forEach((book) => {
+        let row = tbody.insertRow();
+        let title = row.insertCell(0);
+        let author = row.insertCell(1);
+        let pages = row.insertCell(2);
+        let read = row.insertCell(3);
+
+        title.innerHTML = book.title;
+        author.innerHTML = book.author;
+        pages.innerHTML = book.pages;
+        read.innerHTML = book.read;
+    });
+}
+
 
