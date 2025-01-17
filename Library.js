@@ -1,5 +1,18 @@
 const myLibrary = [];
 
+class library{
+    addBookToLibrary(book){
+        
+    }
+}
+class book{
+    constructor(title,author,pages,read){
+        this.title  = title;
+        this.author  = author;
+        this.pages  = pages;
+        this.read  = read;
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -38,13 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
