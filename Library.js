@@ -1,4 +1,3 @@
-const myLibrary = [];
 
 class Book{
     constructor(title,author,pages,read){
@@ -9,6 +8,53 @@ class Book{
     }
     toggleReadStatus(){
         this.read = !this.read;
+    }
+}
+
+class Library{
+    constructor(){
+        this.library = [];
+    }
+    addBookToLibrary(Book){
+        this.library.push(Book);
+    }
+    removeBook(index) {
+        this.library.splice(index, 1);
+        this.displayBooks();
+    }
+    clearFields() {
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+        document.querySelector('#pages').value = '';
+        document.querySelector('#read').checked = false;
+    }
+    displayBooks() {
+        let tbody = document.querySelector('tbody');
+        tbody.innerHTML = '';
+        this.library.forEach((Book,index) => {
+            let row = tbody.insertRow();
+            let title = row.insertCell(0);
+            let author = row.insertCell(1);
+            let pages = row.insertCell(2);
+            let read = row.insertCell(3);
+            let toggleRead = row.insertCell(4);
+            let remove = row.insertCell(5);
+    
+            title.innerHTML = Book.title;
+            author.innerHTML = Book.author;
+            pages.innerHTML = Book.pages;
+            read.innerHTML = Book.read;
+            remove.innerHTML = '<button class="remove">Remove</button>';
+            toggleRead.innerHTML = '<button class="toggleRead">Toggle</button>';
+    
+            remove.querySelector('.remove').addEventListener('click', () => {
+                this.removeBook(index);
+            });
+            toggleRead.querySelector('.toggleRead').addEventListener('click', () => {
+                this.Book.toggleReadStatus();
+                this.displayBooks();
+            });
+        });
     }
 }
 
@@ -49,50 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-}
-
-function clearFields() {
-  document.querySelector('#title').value = '';
-  document.querySelector('#author').value = '';
-  document.querySelector('#pages').value = '';
-  document.querySelector('#read').checked = false;
 
 
-}
-function displayBooks() {
-    let table = document.querySelector('table');
-    let tbody = document.querySelector('tbody');
-    tbody.innerHTML = '';
-    myLibrary.forEach((book,index) => {
-        let row = tbody.insertRow();
-        let title = row.insertCell(0);
-        let author = row.insertCell(1);
-        let pages = row.insertCell(2);
-        let read = row.insertCell(3);
-        let toggleRead = row.insertCell(4);
-        let remove = row.insertCell(5);
 
-        title.innerHTML = book.title;
-        author.innerHTML = book.author;
-        pages.innerHTML = book.pages;
-        read.innerHTML = book.read;
-        remove.innerHTML = '<button class="remove">Remove</button>';
-        toggleRead.innerHTML = '<button class="toggleRead">Toggle</button>';
 
-        remove.querySelector('.remove').addEventListener('click', () => {
-            removeBook(index);
-        });
-        toggleRead.querySelector('.toggleRead').addEventListener('click', () => {
-            book.toggleReadStatus();
-            displayBooks();
-        });
-    });
-}
-function removeBook(index) {
-    myLibrary.splice(index, 1);
-    displayBooks();
-}
 
 
