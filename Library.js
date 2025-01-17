@@ -14,6 +14,7 @@ class Book{
 class Library{
     constructor(){
         this.library = [];
+        this.initialize();
     }
     addBookToLibrary(Book){
         this.library.push(Book);
@@ -51,51 +52,40 @@ class Library{
                 this.removeBook(index);
             });
             toggleRead.querySelector('.toggleRead').addEventListener('click', () => {
-                this.Book.toggleReadStatus();
+                Book.toggleReadStatus();
                 this.displayBooks();
             });
         });
     }
+    initialize(){
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dialog = document.querySelector('dialog');
+            const addButton = document.querySelector(".addBook");
+            const addBookButton = document.querySelector('.show');
+
+            addBookButton.addEventListener('click', () => {
+                dialog.showModal();
+            });
+            addButton.addEventListener("click", () => {
+                const title = document.querySelector('#title').value;
+                const author = document.querySelector('#author').value;
+                const pages = document.querySelector('#pages').value;
+                const read = document.querySelector('#read').checked;
+    
+                const book = new Book(title, author, pages, read);
+                this.addBookToLibrary(book);
+    
+    
+                this.displayBooks();
+                dialog.close();
+                this.clearFields();
+            });
+        })
+    }  
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const dialog = document.querySelector('dialog');
-    const addBookButton = document.querySelector('.show');
-
-
-    addBookButton.addEventListener('click', () => {
-        dialog.showModal();
-    });
-
-    let addButton = document.querySelector(".addBook");
-    addButton.addEventListener("click", () => {
-        let title = document.querySelector('#title').value;
-        let author = document.querySelector('#author').value;
-        let pages = document.querySelector('#pages').value;
-        let read = document.querySelector('#read').value;
-
-        if(read === "on"){
-            read = true;
-        }
-        else{
-            read = false;
-        }
-
-        let book = new Book(title, author, pages, read);
-        addBookToLibrary(book);
-        console.log(myLibrary);
-        console.log(book);
-
-        displayBooks();
-        dialog.close();
-        clearFields();
-    });
-
-});
-
-
-
+const library  = new Library();
 
 
 
